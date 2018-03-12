@@ -16,4 +16,5 @@ public abstract class IClient {
 
     public abstract void sendMessage(String message);
     public abstract void setMessageListener(IMessageListener messageListener);
+    public abstract IMessageListener getMessageListnerer();
 }

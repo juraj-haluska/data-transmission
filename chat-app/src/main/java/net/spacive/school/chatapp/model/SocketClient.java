@@ -46,4 +46,9 @@ public class SocketClient extends IClient {
     public void setMessageListener(IMessageListener messageListener) {
         this.messageListener = messageListener;
     }
+
+    @Override
+    public IMessageListener getMessageListnerer() {
+        return this.messageListener;
+    }
 }
