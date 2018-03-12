@@ -1,4 +1,4 @@
-package net.spacive.school;
+package net.spacive.school.chatapp;
 
 import java.io.IOException;
 import java.net.ServerSocket;
