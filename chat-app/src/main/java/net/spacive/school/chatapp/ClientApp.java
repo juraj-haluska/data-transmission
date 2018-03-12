@@ -11,15 +11,15 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Client {
+public class ClientApp {
 
-    private Logger logger = Logger.getLogger(Client.class.getName());
+    private Logger logger = Logger.getLogger(ClientApp.class.getName());
+    private static final int PORT_NUMBER = 8000;
+
 
     public static void main(String[] args) {
 
-        int portNumber = Integer.parseInt(args[0]);
-
-        new Client().runClient(portNumber);
+        new ClientApp().runClient(PORT_NUMBER);
     }
 
     private void runClient(int portNumber) {
