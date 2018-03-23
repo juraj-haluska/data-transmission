@@ -11,5 +11,5 @@
 week 03
  - apiblueprint
 
-[week 04](./)
- - 
+[week 04](https://github.com/spacive/data-transmission/tree/week-04)
+ - retrofit usage example - implementation of https://reqres.in/ API
