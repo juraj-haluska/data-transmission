@@ -2,6 +2,14 @@
 
 ## lectures
 
-[week 1](./week_01)
+[week 01](https://github.com/spacive/data-transmission/tree/week-01)
+ - simple java chat using sockets
 
+[week 02](https://github.com/spacive/data-transmission/tree/week-02)
+ - added websockets to chat from week 01
 
+week 03
+ - apiblueprint
+
+[week 04](./)
+ - 
