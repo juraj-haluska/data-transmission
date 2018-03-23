@@ -23,19 +23,21 @@ public class ClientApp {
                 .build();
 
         ReqresService reqresService = retrofit.create(ReqresService.class);
-
-
+        
         // users
         reqresService.listUsers(2).enqueue(new Callback<Page<UserProfile>>() {
             @Override
             public void onResponse(Call<Page<UserProfile>> call, Response<Page<UserProfile>> response) {
                 if (response.isSuccessful()) {
-                    log.log(Level.INFO, "multiple users fetched");
-                    log.log(Level.INFO, response.body().toString());
+                    StringBuilder message = new StringBuilder()
+                            .append("multiple users fetched: ")
+                            .append(response.body().toString());
 
                     response.body().data.forEach((userProfile -> {
-                        log.log(Level.INFO, userProfile.toString());
+                        message.append("\n" + userProfile.toString());
                     }));
+
+                    log.log(Level.INFO, message.toString());
                 }
             }
 
@@ -49,8 +51,11 @@ public class ClientApp {
             @Override
             public void onResponse(Call<Single<UserProfile>> call, Response<Single<UserProfile>> response) {
                 if (response.isSuccessful()) {
-                    log.log(Level.INFO, "single user fetched");
-                    log.log(Level.INFO, response.body().data.toString());
+                    StringBuilder message = new StringBuilder()
+                            .append("single user fetched: ")
+                            .append(response.body().data.toString());
+
+                    log.log(Level.INFO, message.toString());
                 }
             }
 
@@ -65,12 +70,15 @@ public class ClientApp {
             @Override
             public void onResponse(Call<Page<Resource>> call, Response<Page<Resource>> response) {
                 if (response.isSuccessful()) {
-                    log.log(Level.INFO, "multiple resources fetched");
-                    log.log(Level.INFO, response.body().toString());
+                    StringBuilder message = new StringBuilder()
+                            .append("multiple resources fetched: ")
+                            .append(response.body().toString());
 
-                    response.body().data.forEach((userProfile -> {
-                        log.log(Level.INFO, userProfile.toString());
+                    response.body().data.forEach((resource -> {
+                        message.append("\n" + resource.toString());
                     }));
+
+                    log.log(Level.INFO, message.toString());
                 }
             }
 
@@ -85,8 +93,11 @@ public class ClientApp {
             public void onResponse(Call<Single<Resource>> call, Response<Single<Resource>> response) {
 
                 if (response.isSuccessful()) {
-                    log.log(Level.INFO, "single resource fetched");
-                    log.log(Level.INFO, response.body().data.toString());
+                    StringBuilder message = new StringBuilder()
+                            .append("single resource fetched: ")
+                            .append(response.body().data.toString());
+
+                    log.log(Level.INFO, message.toString());
                 }
             }
 
