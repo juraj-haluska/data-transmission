@@ -14,7 +14,7 @@ public class User {
     public String job;
     @SerializedName("id")
     @Expose
-    public String id;
+    public int id;
     @SerializedName("createdAt")
     @Expose
     public String createdAt;

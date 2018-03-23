@@ -1,15 +1,13 @@
 package net.spacive.school;
 
-import net.spacive.school.models.Page;
-import net.spacive.school.models.Resource;
-import net.spacive.school.models.Single;
-import net.spacive.school.models.UserProfile;
+import net.spacive.school.models.*;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +15,7 @@ public class ClientApp {
 
     private final static Logger log = Logger.getLogger(ClientApp.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://reqres.in/api/")
@@ -25,7 +23,6 @@ public class ClientApp {
                 .build();
 
         ReqresService reqresService = retrofit.create(ReqresService.class);
-
 
 
         // users
@@ -98,5 +95,41 @@ public class ClientApp {
                 log.log(Level.SEVERE, throwable.getMessage());
             }
         });
+
+        // user manipulation
+        User newUser = new User();
+        newUser.name = "Test user";
+        newUser.job = "api tester";
+
+        Response<User> response = reqresService.createUser(newUser).execute();
+
+        if (response.isSuccessful()) {
+            newUser = response.body();
+            log.log(Level.INFO, "new user created");
+            log.log(Level.INFO, newUser.toString());
+        }
+
+        User updatedUser = newUser;
+        updatedUser.job = "UI tester";
+
+        response = reqresService.updateUser(
+                updatedUser.id,
+                updatedUser
+        ).execute();
+
+        if (response.isSuccessful()) {
+            updatedUser = response.body();
+            log.log(Level.INFO, "user updated");
+            log.log(Level.INFO, newUser.toString());
+        }
+
+        Response<Void> deleteResponse = reqresService.deleteUser(
+                updatedUser.id
+        ).execute();
+
+        if (deleteResponse.isSuccessful()) {
+            log.log(Level.INFO, "user deleted");
+        }
+
     }
 }

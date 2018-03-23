@@ -1,13 +1,8 @@
 package net.spacive.school;
 
-import net.spacive.school.models.Page;
-import net.spacive.school.models.Resource;
-import net.spacive.school.models.Single;
-import net.spacive.school.models.UserProfile;
+import net.spacive.school.models.*;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 public interface ReqresService {
 
@@ -23,4 +18,13 @@ public interface ReqresService {
     @GET("unknown/{id}")
     Call<Single<Resource>> singleResource(@Path("id") int userId);
 
+    @POST("users")
+    Call<User> createUser(@Body User user);
+
+    // or @PATCH("users/{id}")
+    @PUT("users/{id}")
+    Call<User> updateUser(@Path("id") int userId, @Body User user);
+
+    @DELETE("users/{id}")
+    Call<Void> deleteUser(@Path("id") int userId);
 }
