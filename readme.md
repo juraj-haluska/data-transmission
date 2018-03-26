@@ -13,3 +13,6 @@ week 03
 
 [week 04](https://github.com/spacive/data-transmission/tree/week-04)
  - retrofit usage example - implementation of https://reqres.in/ API
+
+[week 05](https://github.com/spacive/data-transmission/tree/week-05)
+ - dropwizard demo application
