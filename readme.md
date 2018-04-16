@@ -15,4 +15,4 @@ week 03
  - retrofit usage example - implementation of https://reqres.in/ API
 
 [week 05](https://github.com/spacive/data-transmission/tree/week-05)
- - dropwizard demo application
+ - dropwizard demo application implementing Reqres.in api
