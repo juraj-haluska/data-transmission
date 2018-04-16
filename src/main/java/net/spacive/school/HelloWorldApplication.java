@@ -5,6 +5,8 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import net.spacive.school.health.TemplateHealthCheck;
 import net.spacive.school.resources.HelloWorldResource;
+import net.spacive.school.resources.UnknownResource;
+import net.spacive.school.resources.UsersResource;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -30,8 +32,14 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         );
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
+
+        final UsersResource usersResource = new UsersResource();
+        final UnknownResource unknownResource = new UnknownResource();
+
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
+        environment.jersey().register(usersResource);
+        environment.jersey().register(unknownResource);
     }
 
 }
