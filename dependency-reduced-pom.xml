@@ -19,7 +19,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>net.spacive.school.HelloWorldApplication</mainClass>
+                  <mainClass>net.spacive.school.ReqresService</mainClass>
                 </transformer>
               </transformers>
             </configuration>

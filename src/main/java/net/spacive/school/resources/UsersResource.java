@@ -5,6 +5,7 @@ import net.spacive.school.models.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +45,9 @@ public class UsersResource {
     @GET
     @Path("/{id}")
     public Single<UserProfile> getSingleUSer(@PathParam("id") Integer userId) {
+        if (userId == 23) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
         return new Single<UserProfile>()
                 .withData(getMockUserProfile());
     }

@@ -39,8 +39,10 @@ public class UnknownResource {
 
     @GET
     @Path("/{id}")
-    public Single<Unknown> getSingleUnknown(@PathParam("id") Optional<Integer> unknownId) {
-        if (unknownId.get().equals(23)) throw new WebApplicationException(Response.Status.NOT_FOUND);
+    public Single<Unknown> getSingleUnknown(@PathParam("id") Integer unknownId) {
+        if (unknownId == 23) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
         return new Single<Unknown>()
                 .withData(getMockUnknownResource());
     }
